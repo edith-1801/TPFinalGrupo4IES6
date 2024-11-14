@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BIENVENIDOS AL PROYECTO</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body>
+	
+    <div class="container">
+     
+	<div th:replace="~{layout/header :: header}"></div>
+    
+
+    <!-- Contenido principal de bienvenida -->
+    <main class="welcome-section">
+        <div>
+            <h1 class="display-4">BIENVENIDOS A LA PAGINA DEL GRUPO4</h1>
+            <p class="lead">Este es el inicio de tu aplicación. Desde aquí puedes navegar a las distintas secciones mediante el menú superior.</p>
+            <hr class="my-4">
+            <p>Para comenzar, selecciona una opción en el menú o explora la lista de clientes.</p>
+            <a href="/nuevo" class="btn btn-primary btn-lg mt-3" role="button">CARGA DE CLIENTES</a>
+       
+        </div>
+    </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
+</body>
+</html>
