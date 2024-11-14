@@ -31,8 +31,8 @@
 					<td th:text="${cliente.apellido}"></td>
 
 					<td>
-						<a class="btn btn-danger" th:href="@{/eliminarCliente/{dni}(dni=${alumno.dni})}">Borrar</a>
-						<a class="btn btn-success"th:href="@{/modificarCliente/{dni}(dni=${alumno.dni})}">Editar</a>
+						<a class="btn btn-danger" th:href="@{/eliminarCliente/{dni}(dni=${cliente.dni})}">Borrar</a>
+						<a class="btn btn-success"th:href="@{/modificarCliente/{dni}(dni=${cliente.dni})}">Editar</a>
 					</td>
 				</tr>
 			</tbody>

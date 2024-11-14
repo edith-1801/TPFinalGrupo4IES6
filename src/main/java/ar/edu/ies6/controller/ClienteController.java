@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ public class ClienteController {
 	Cliente unCliente;
 	
 	@Autowired
+	@Qualifier("servicioClienteBD")
 	IClienteService clienteService;
 	
 	//metodo para la vista inicial de la pagina
@@ -37,7 +39,7 @@ public class ClienteController {
 	
 		
 		ModelAndView transportador = new ModelAndView("cliente");
-		transportador.addObject("nuevoCliente",unCliente);
+		transportador.addObject("nuevoCliente",  unCliente);
 		transportador.addObject("band", false);
 		
 		return transportador;
@@ -46,9 +48,14 @@ public class ClienteController {
 	public ModelAndView guardarCliente(Cliente cliente) { 
 		clienteService.guardarCliente(cliente); 
 		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("listadoClientes");
-		modelAndView.addObject("nuevoCliente", cliente);
+		System.out.println("DNI:"+ cliente.getDni());
+		System.out.println("Nombre"+ cliente.getNombre());
+		System.out.println("Apellido"+ cliente.getApellido());
+		System.out.println("Email"+cliente.getEmail());
+		System.out.println("Direccion"+ cliente.getDireccion());
+		
+		ModelAndView modelAndView = new ModelAndView("listadoClientes");
+		modelAndView.addObject("listadoClientes", clienteService.listarTodosClientes());
 		return modelAndView;
 		
 	}

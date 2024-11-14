@@ -2,17 +2,33 @@ package ar.edu.ies6.model;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 
 
 @Component
+@Entity
 public class Cliente {
-	
+	@Id
 	private String dni;
+	
+	@Column
 	private String nombre;
-	private String apellido;
-	private Boolean estado;
+	
+	@Column
+	private String apellido;	
+	
+	@Column
 	private String email;
+	
+	@Column
 	private String direccion;
+	
+	@Column
+	private Boolean estado;
+	
 	
 	public Cliente() {}
 	
