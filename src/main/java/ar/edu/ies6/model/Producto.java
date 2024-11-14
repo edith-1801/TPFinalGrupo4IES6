@@ -1,7 +1,8 @@
 package ar.edu.ies6.model;
 
+import org.springframework.stereotype.Component;
+@Component
 public class Producto {
-	
 	//atributos
 	private int id;
 	private String nombre;
