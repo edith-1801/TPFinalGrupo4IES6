@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	
+<header>
+	<div th:fragment="header">
+		
+	
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<nav class="navbar" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+     <span class="navbar-brand mb-0 h1">IES N°6</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+        </li>
+        <li class="nav-item dropdown" >
+			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Listas
+          </a>
+          <ul class="dropdown-menu">
+
+          <li><a class="dropdown-item" href="/listadoClientes">Lista Clientes</a></li>
+          <li><a class="dropdown-item" href="/listadoProductos">Lista Productos</a></li>
+          <li><a class="dropdown-item" href="/listadoCompras">Lista Compras</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Opciones
+          </a>
+          <ul class="dropdown-menu">
+
+            <li><a class="dropdown-item" href="/nuevoCliente">Cliente</a></li>
+            <li><a class="dropdown-item" href="/productos">Productos</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/nuevo">Compras</a></li>
+
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+        
+    </div>
+  </div>
+</nav>
+
+
+</header>
+</body>
+</html>
