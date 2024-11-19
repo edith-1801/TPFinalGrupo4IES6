@@ -15,7 +15,8 @@
 		<div th:replace="~{layout/header :: header}"></div>
 		<h1>Carga de productos</h1>
 		<P>esto es la prueba de un parrafo</P>
-		<form data-th-object="${producto}">
+		<form data-th-object="${producto}"data-th-action="@{/guardarProducto}"
+			method="post">
 			<div class="row">
 				<div class="col">
 					<label id="id">Id</label> <input type="text"
@@ -34,6 +35,11 @@
 						data-th-field="${producto.precio}" /> <br> <label>Stock</label>
 					<input type="text" data-th-field="${producto.stock}" />
 				</div>
+				<div class="col">
+					<input type="submit" value="Guardar Producto" />
+
+				</div>
+				
 			</div>
 		</form>
 		</div>
