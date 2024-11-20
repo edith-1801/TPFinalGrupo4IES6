@@ -2,6 +2,7 @@ package ar.edu.ies6.service.imp;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import ar.edu.ies6.model.Producto;
@@ -10,7 +11,10 @@ import ar.edu.ies6.util.AlmacenProductos;
 
 
 @Service
+
 public class ProductoServiceImp implements IProductoService {
+	
+	@Qualifier("servicioProductoArrayList")
 
 	@Override
 	public void guardarProducto(Producto producto) {

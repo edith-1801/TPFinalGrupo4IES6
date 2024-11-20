@@ -1,27 +1,44 @@
 package ar.edu.ies6.model;
 
 import org.springframework.stereotype.Component;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 @Component
+@Entity
 public class Producto {
 	//atributos
-	private int id;
+	@Id
+	private  String id;
+	@Column
 	private String nombre;
+	@Column
 	private String descripcion;
+	@Column
 	private double precio;
+	@Column
 	private int stock;
+	@Column
 	private boolean estado;
 	
 	public Producto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
+	
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+
+
+	public void setId(String id) {
 		this.id = id;
 	}
+
+
 
 	public String getNombre() {
 		return nombre;
