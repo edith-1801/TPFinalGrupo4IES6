@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,4 +40,15 @@ public class ProductoController {
 		transportador.addObject("listadoProducto", productoService.listarTodosProducto());
 		return transportador;
 	}
+	//eliminar
+	@GetMapping("/eliminarProducto/{id}")
+	public ModelAndView deleteProducto(@PathVariable(name = "id") String id) {
+		productoService.eliminarProducto(id);
+		// mostrar el nuevo listado
+		ModelAndView modelView = new ModelAndView("listaProductos");
+		modelView.addObject("listadoProducto", productoService.listarTodoActivos());
+		return modelView;
+
+	}
+
 }
