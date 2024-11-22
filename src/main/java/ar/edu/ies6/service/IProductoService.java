@@ -11,7 +11,7 @@ public interface IProductoService {
 			//metodos
 			public void guardarProducto(Producto producto);
 			public void eliminarProducto(String id);
-			public void modificarProducto(Producto materiaModificado);
+			public void modificarProducto(Producto productoModificado);
 			public Producto consultarProducto(String id);
 			public List<Producto> listarTodosProducto();
 			public List<Producto> listarTodoActivos ();

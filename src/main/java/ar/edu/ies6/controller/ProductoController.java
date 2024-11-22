@@ -26,6 +26,7 @@ public class ProductoController {
        //transporte hacia la vista
 		ModelAndView transportador = new ModelAndView("formularioProducto");
 		transportador.addObject("producto", unProducto);
+		transportador.addObject("band", false);
 
 		return transportador;
 	}
@@ -50,5 +51,27 @@ public class ProductoController {
 		return modelView;
 
 	}
+	// modificar
+		@GetMapping("/modificarProducto/{id}")
+		public ModelAndView modificarProducto(@PathVariable(name = "id") String id) {
+			// el parametro del connstructor ModelAndView es una vista html ,tambien se
+			// puede a gregar objectos al modelandview
+			ModelAndView modelView = new ModelAndView("formularioProducto");
+
+			modelView.addObject("producto", productoService.consultarProducto(id));
+			modelView.addObject("band", true);
+
+			return modelView;
+		}
+		@GetMapping("/listadoProductos")
+		public ModelAndView getAllproductos() {
+			// codigo
+			//Producto unProducto = new Producto();
+	       //transporte hacia la vista
+			ModelAndView transportador = new ModelAndView("listaProductos");
+			transportador.addObject("listadoProducto",productoService.listarTodoActivos());
+
+			return transportador;
+		}
 
 }

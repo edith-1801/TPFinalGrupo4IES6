@@ -15,12 +15,14 @@
 		<div th:replace="~{layout/header :: header}"></div>
 		<h1>Carga de productos</h1>
 		<P>esto es la prueba de un parrafo</P>
-		<form data-th-object="${producto}"data-th-action="@{/guardarProducto}"
-			method="post">
+		<form data-th-object="${producto}"data-th-action="@{/guardarProducto}" method="post">
+		<input type="hidden" data-th-if="${band}"
+				data-th-field="${producto.id}">
+		
 			<div class="row">
 				<div class="col">
 					<label id="id">Id</label> <input type="text"
-						data-th-field="${producto.id}" />
+						data-th-field="${producto.id}"data-th-readonly=${band} />
 				</div>
 				<div class="col">
 					<label>Nombre</label> <input type="text"

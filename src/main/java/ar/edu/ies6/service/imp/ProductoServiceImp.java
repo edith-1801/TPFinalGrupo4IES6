@@ -29,13 +29,7 @@ public class ProductoServiceImp implements IProductoService {
 		
 	}
 
-	@Override
-	public void modificarProducto(Producto materiaModificado) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
+		@Override
 	public Producto consultarProducto(String codigo) {
 		// TODO Auto-generated method stub
 		return null;
@@ -52,6 +46,12 @@ public class ProductoServiceImp implements IProductoService {
 	public List<Producto> listarTodoActivos() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void modificarProducto(Producto productoModificado) {
+		// TODO Auto-generated method stub
+		
 	}
 	 
 

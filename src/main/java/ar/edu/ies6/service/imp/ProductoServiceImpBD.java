@@ -32,7 +32,7 @@ ProductoRepository productoRepository;
 	}
 
 	@Override
-	public void modificarProducto(Producto materiaModificado) {
+	public void modificarProducto(Producto productoModificado) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -40,7 +40,7 @@ ProductoRepository productoRepository;
 	@Override
 	public Producto consultarProducto(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return productoRepository.findById(id).get();
 	}
 
 	@Override
