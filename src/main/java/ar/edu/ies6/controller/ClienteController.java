@@ -1,12 +1,10 @@
 package ar.edu.ies6.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -42,7 +40,7 @@ public class ClienteController {
 		transportador.addObject("nuevoCliente",  unCliente);
 		transportador.addObject("band", false);
 		
-		return transportador;
+ 		return transportador;
 	}
 	@PostMapping("/guardarCliente")
 	public ModelAndView guardarCliente(Cliente cliente) { 
@@ -55,15 +53,49 @@ public class ClienteController {
 		System.out.println("Direccion"+ cliente.getDireccion());
 		
 		ModelAndView modelAndView = new ModelAndView("listadoClientes");
-		modelAndView.addObject("listadoClientes", clienteService.listarTodosClientes());
+		modelAndView.addObject("listadoClientes", clienteService.listarTodosClientesActivos());
 		return modelAndView;
 		
 	}
-	public class AlmacenClientes {
-	    public static List<Cliente> cliente = new ArrayList<>();
+	//public class AlmacenClientes {
+	  //  public static List<Cliente> cliente = new ArrayList<>();
+	
+	
+	
+	
+	
+	
 	
 	
 	//mostrar nuevo listado
+	    @GetMapping("/listadoClientes")
+	    public ModelAndView listarClientes() {
+	    	ModelAndView modelAndView = new ModelAndView("listadoClientes");
+	    	modelAndView.addObject("listadoClientes", clienteService.listarTodosClientesActivos());
+	    	return modelAndView;
+	    }
+	    @GetMapping("/eliminarCliente/{dni}")
+		public ModelAndView deleteCliente(@PathVariable(name="dni")String dni){ 
+		clienteService.eliminarCliente(dni);
+		
+		//mostrar nuevo listado
+		ModelAndView modelView = new ModelAndView("listadoClientes");
+	    modelView.addObject("listadoClientes", clienteService.listarTodosClientesActivos());
+	    return modelView;
+	    }
+	    
+	  //modificar
+		@GetMapping("/modificarCliente/{dni}")
+		public ModelAndView mofificarCliente (@PathVariable(name="dni")String dni) {
+			//el parametro del constructor de ModelAndView es una html
+			ModelAndView modelView = new ModelAndView("cliente");
+		    modelView.addObject("nuevoCliente", clienteService.consultarCliente(dni));
+		    modelView.addObject("band", true);
+		   
+		    return modelView;
+		    
+		}
+		
 		
 	}
-}
+
