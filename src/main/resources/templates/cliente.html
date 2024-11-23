@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="UTF-8">
+
+<title>FORMULARIO CLIENTES</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+		<style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 50px auto;
+            max-width: 600px;
+        }
+        .btn-primary {
+            background-color: #0056a6;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #004280;
+        }
+        .header-title {
+            color: #0056a6;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+	<div class="container">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<div th:replace="~{layout/header :: header}"></div>
+	<div class="form-container">
+			<h1 class="header-title">CARGA DE CLIENTES</h>
+			
+		
+		
+		<form th:action="@{/guardarCliente}" th:object="${nuevoCliente}" method="post">
+                
+			
+			<div class="row">
+				<div class="mb-3">
+					<label id="dni"> DNI</label>
+					<input type="text" th:field="*{dni}" th:readonly="${band}"/>
+					<br>
+					<br>
+				</div>
+				<div class="mb-3">
+					<label>Nombre</label>
+					<input type="text" th:field="*{nombre}"/>
+					<br>
+					<br>
+				</div>
+				<div class="mb-3">
+					<label>Apellido</label>
+					<input type="text" th:field="*{apellido}"/>
+					<br>
+					<br>
+				</div>
+				<div class="mb-3">
+					<label>Email</label>
+					<input type="text" th:field="*{email}"/>
+					<br>
+					<br>								
+			
+				</div>				   
+				 
+				<div class="mb-3">
+					<label for="direccion">Dirección:</label>
+                    <input type="text"  th:field="*{direccion}" />
+					<br>
+					<br>
+					<input type="submit" value="Guardar Cliente"/>
+				</div>	
+			</div>
+		</form>
+	</div>
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>
