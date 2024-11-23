@@ -17,6 +17,7 @@
 				<th>PRECIO</th>
 				<th>STOCK</th>
 				<th>EDICION</th>
+				<th>MARCA</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,7 +27,7 @@
 					<td data-th-text="${producto.descripcion}"></td>
 					<td data-th-text="${producto.precio}"></td>
 					<td data-th-text="${producto.stock}"></td>
-          
+                    <td data-th-text="${producto.marca}"></td>
 						<td ><a class="btn btn-danger"data-th-href="@{'/eliminarProducto/' + ${producto.id}}">Borrar</a>
 						<a class="btn btn-success"data-th-href="@{'/modificarProducto/' + ${producto.id}}">Editar</a>
 						

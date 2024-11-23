@@ -21,6 +21,8 @@ public class Producto {
 	private int stock;
 	@Column
 	private boolean estado;
+	@Column
+	private  String  marca;
 	
 	public Producto() {
 		// TODO Auto-generated constructor stub
@@ -78,6 +80,18 @@ public class Producto {
 
 	public void setEstado(boolean estado) {
 		this.estado = estado;
+	}
+
+
+
+	public String getMarca() {
+		return marca;
+	}
+
+
+
+	public void setMarca(String marca) {
+		this.marca = marca;
 	}
 
 
