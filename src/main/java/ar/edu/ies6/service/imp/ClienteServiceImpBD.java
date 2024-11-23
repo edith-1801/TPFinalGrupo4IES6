@@ -1,6 +1,7 @@
 package ar.edu.ies6.service.imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,13 +25,16 @@ public class ClienteServiceImpBD implements IClienteService {
 	public void guardarCliente(Cliente cliente) {
 		// TODO Auto-generated method stub
 	    //guardar cliente en BD
-		
+		cliente.setEstado(true);
 		clienteRepository.save(cliente);
 	}
 
 	@Override
 	public void eliminarCliente(String dni) {
 		// TODO Auto-generated method stub
+		Optional<Cliente> clienteEncontrado = clienteRepository.findById(dni);
+		clienteEncontrado.get().setEstado(false);
+		clienteRepository.save(clienteEncontrado.get());
 		
 	}
 
@@ -43,13 +47,18 @@ public class ClienteServiceImpBD implements IClienteService {
 	@Override
 	public Cliente consultarCliente(String dni) {
 		// TODO Auto-generated method stub
-		return null;
+		return clienteRepository.findById(dni).get();
 	}
 
 	@Override
 	public List<Cliente> listarTodosClientes() {
 		// TODO Auto-generated method stub
 		return (List<Cliente>) clienteRepository.findAll();
+	}
+	@Override
+	public List<Cliente> listarTodosClientesActivos() {
+		// TODO Auto-generated method stub
+		return (List<Cliente>) clienteRepository.findByEstado(true);
 	}
 
 }
