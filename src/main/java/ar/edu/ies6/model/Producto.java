@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 @Component
 @Entity
 public class Producto {
@@ -23,6 +24,10 @@ public class Producto {
 	private boolean estado;
 	@Column
 	private  String  marca;
+	@Lob
+	@Column (columnDefinition ="LONGTEXT")
+	private  String  foto ;
+	
 	
 	public Producto() {
 		// TODO Auto-generated constructor stub
@@ -93,6 +98,22 @@ public class Producto {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
+
+
+
+	public String getFoto() {
+		return foto;
+	}
+
+
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+
+
+
 
 
 	
