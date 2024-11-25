@@ -15,7 +15,7 @@ public interface IClienteService {
 	public void guardarCliente(Cliente cliente);
 	public void eliminarCliente(String dni);
 	public void modificarCliente(Cliente clienteModificado);
-	public Cliente consultarCliente(String dni);
+	public Cliente consultarCliente(String clienteId);
 	public List<Cliente> listarTodosClientes();
 	public List<Cliente> listarTodosClientesActivos();
 	

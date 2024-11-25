@@ -1,99 +1,92 @@
 package ar.edu.ies6.model;
 
 import org.springframework.stereotype.Component;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
 @Component
 @Entity
 public class Producto {
-	//atributos
-	@Id
-	private  String id;
-	@Column
-	private String nombre;
-	@Column
-	private String descripcion;
-	@Column
-	private double precio;
-	@Column
-	private int stock;
-	@Column
-	private boolean estado;
-	@Column
-	private  String  marca;
-	
-	public Producto() {
-		// TODO Auto-generated constructor stub
-	}
 
-	
+    @Id
+    private String id;
 
-	public String getId() {
-		return id;
-	}
+    @Column
+    private String nombre;
 
+    @Column
+    private String descripcion;
 
+    @Column
+    private double precio;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    @Column
+    private int stock;
 
+    @Column
+    private boolean estado;
 
+    @Column
+    private String marca;
 
-	public String getNombre() {
-		return nombre;
-	}
+    public Producto() {}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    // Getters y setters
+    public String getId() {
+        return id;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public double getPrecio() {
-		return precio;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public int getStock() {
-		return stock;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
+    public double getPrecio() {
+        return precio;
+    }
 
-	public boolean isEstado() {
-		return estado;
-	}
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 
-	public void setEstado(boolean estado) {
-		this.estado = estado;
-	}
+    public int getStock() {
+        return stock;
+    }
 
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
 
+    public boolean isEstado() {
+        return estado;
+    }
 
-	public String getMarca() {
-		return marca;
-	}
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 
+    public String getMarca() {
+        return marca;
+    }
 
-
-	public void setMarca(String marca) {
-		this.marca = marca;
-	}
-
-
-	
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
 }
+

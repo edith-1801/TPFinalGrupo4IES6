@@ -29,6 +29,13 @@
                 <p class="card-text">Tu compra con ID <span th:text="${compra.id}"></span> ha sido confirmada.</p>
                 <p class="card-text">El método de pago seleccionado es: <span th:text="${compra.metodoPago}"></span>.</p>
                 <p class="card-text">El total de la compra es: $<span th:text="${compra.totalCompra}"></span>.</p>
+                <p class="card-text">Cliente: <span th:text="${compra.cliente.nombre}"></span>.</p>
+                <p class="card-text">Producto(s):</p>
+                <ul>
+                    <li th:each="producto, iterStat : ${compra.productos}">
+                        <span th:text="${producto.nombre}"></span> - Cantidad: <span th:text="${cantidad[iterStat.index]}"></span>
+                    </li>
+                </ul>
                 <a href="/listadoCompras" class="btn btn-primary">Volver a la Lista de Compras</a>
             </div>
         </div>
@@ -36,4 +43,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

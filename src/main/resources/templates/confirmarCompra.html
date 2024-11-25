@@ -27,7 +27,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <img th:src="${compra.imagenUrl}" class="img-fluid" alt="Imagen del Producto">
+                        <img th:src="'data:image/jpeg;base64,' + ${compra.foto}" class="img-fluid" alt="Imagen del Producto">
                     </div>
                     <div class="col-md-8">
                         <h5 class="card-title">Compra ID: <span th:text="${compra.id}"></span></h5>
@@ -36,32 +36,36 @@
                         <p class="card-text"><strong>Método de Pago:</strong> <span th:text="${compra.metodoPago}"></span></p>
                         <p class="card-text"><strong>Estado de la Compra:</strong> <span th:text="${compra.estadoCompra}"></span></p>
                         <p class="card-text"><strong>Descripción del Producto:</strong> <span th:text="${compra.descripcionProducto}"></span></p>
-                        <div class="mb-3">
-                            <label for="metodoPago" class="form-label">Método de Pago</label>
-                            <form th:object="${compra}" th:action="@{/realizarCompra/{id}(id=${compra.id})}" method="post">
+                        <form th:object="${compra}" th:action="@{/realizarCompra/{id}(id=${compra.id})}" method="post">
+                            <div class="mb-3">
+                                <label for="metodoPago" class="form-label">Método de Pago</label>
                                 <select th:field="*{metodoPago}" class="form-select" id="metodoPago" required>
                                     <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
                                     <option value="Efectivo">Efectivo</option>
                                     <option value="Transferencia">Transferencia</option>
                                 </select>
-                                <div class="mb-3">
-                                    <label for="metodoEnvio" class="form-label">Método de Envío</label>
-                                    <select class="form-select" id="metodoEnvio" required>
-                                        <option value="CORREO ARGENTINO SUCURSAL">CORREO ARGENTINO SUCURSAL</option>
-                                        <option value="CORREO ARGENTINO DOMICILIO">CORREO ARGENTINO DOMICILIO</option>
-                                        <option value="RETIRO EN TIENDA">RETIRO EN TIENDA</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="codigoDescuento" class="form-label">Código de Descuento</label>
-                                    <input type="text" class="form-control" id="codigoDescuento" placeholder="Ingresa tu código de descuento">
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg">COMPRAR</button>
-                                    <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='/listadoCompras'">CANCELAR COMPRA</button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="clienteId" class="form-label">Seleccionar Cliente</label>
+                                <select name="clienteId" class="form-select" id="clienteId" required>
+                                    <option th:each="cliente : ${clientes}" th:value="${cliente.dni}" th:text="${cliente.nombre}"></option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="productosIds" class="form-label">Seleccionar Producto</label>
+                                <select name="productosIds" class="form-select" id="productosIds" required>
+                                    <option th:each="producto : ${productos}" th:value="${producto.id}" th:text="${producto.nombre}"></option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cantidad" class="form-label">Cantidad</label>
+                                <input type="number" class="form-control" name="cantidad" id="cantidad" min="1" value="1" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">COMPRAR</button>
+                                <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='/cancelarCompra/${compra.id}'">CANCELAR COMPRA</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
