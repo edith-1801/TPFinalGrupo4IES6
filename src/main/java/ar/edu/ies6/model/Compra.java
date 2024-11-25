@@ -1,7 +1,6 @@
 package ar.edu.ies6.model;
 
 import java.sql.Date;
-
 import org.springframework.stereotype.Component;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
