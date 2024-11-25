@@ -46,4 +46,10 @@ public class ClienteServiceImp implements IClienteService{
 		return AlmacenCliente.clientes;
 	}
 
+	@Override
+	public List<Cliente> listarTodosClientesActivos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

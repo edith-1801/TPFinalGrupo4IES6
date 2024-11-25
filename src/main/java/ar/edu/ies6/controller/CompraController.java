@@ -61,7 +61,6 @@ public class CompraController {
         return modelView;
     }
 
-
     @PostMapping("/realizarCompra/{id}")
     public ModelAndView realizarCompra(@PathVariable(name = "id") Long id, @RequestParam("metodoPago") String metodoPago) {
         Compra compra = compraService.consultarCompra(id);
