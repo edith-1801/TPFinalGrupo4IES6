@@ -5,32 +5,35 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import jakarta.persistence.Lob;
 @Component
 @Entity
 public class Producto {
+	//atributos
+	@Id
+	private  String id;
+	@Column
+	private String nombre;
+	@Column
+	private String descripcion;
+	@Column
+	private double precio;
+	@Column
+	private int stock;
+	@Column
+	private boolean estado;
+	@Column
+	private  String  marca;
+	@Lob
+	@Column (columnDefinition ="LONGTEXT")
+	private  String  foto ;
+	
+	
+	public Producto() {
+		// TODO Auto-generated constructor stub
+	}
 
-    @Id
-    private String id;
-
-    @Column
-    private String nombre;
-
-    @Column
-    private String descripcion;
-
-    @Column
-    private double precio;
-
-    @Column
-    private int stock;
-
-    @Column
-    private boolean estado;
-
-    @Column
-    private String marca;
-
-    public Producto() {}
+	
 
     // Getters y setters
     public String getId() {
@@ -85,8 +88,33 @@ public class Producto {
         return marca;
     }
 
+
     public void setMarca(String marca) {
         this.marca = marca;
     }
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+
+
+	public String getFoto() {
+		return foto;
+	}
+
+
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+
+
+
+
+
+	
+
 }
 
