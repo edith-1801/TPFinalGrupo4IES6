@@ -1,11 +1,15 @@
 package ar.edu.ies6.controller;
 
+import java.util.Base64;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.ies6.model.Producto;
@@ -30,17 +34,29 @@ public class ProductoController {
 
 		return transportador;
 	}
-	@PostMapping("/guardarProducto")
-	public ModelAndView guardarProducto (Producto producto) {
-		productoService.guardarProducto(producto);
+	@PostMapping(value = "/guardarProducto", consumes = "multipart/form-data")
+	public ModelAndView guardarProducto(Producto producto, @RequestParam("file") MultipartFile file) {
+	    ModelAndView transportador = new ModelAndView("listaProductos");
 
-   // ProductoServiceImp  productoService = new ProductoServiceImp ();
-	//	productoService.guardarProducto(producto);
+	    try {
+	        // Procesar el archivo (por ejemplo, convertirlo a Base64 para almacenarlo)
+	        byte[] contenido = file.getBytes();
+	        String base64 = Base64.getEncoder().encodeToString(contenido);
+	        producto.setFoto(base64); // Suponiendo que el atributo `foto` existe en Producto
 
-		ModelAndView transportador = new ModelAndView("listaProductos");
-		transportador.addObject("listadoProducto", productoService.listarTodosProducto());
-		return transportador;
+	        // Guardar el producto con la foto
+	        productoService.guardarProducto(producto);
+
+	        // Preparar el modelo con la lista actualizada de productos
+	        transportador.addObject("listadoProducto", productoService.listarTodosProducto());
+	    } catch (Exception e) {
+	        // Manejar errores (por ejemplo, errores al procesar el archivo)
+	        transportador.addObject("Error", e.getMessage());
+	    }
+
+	    return transportador;
 	}
+
 	//eliminar
 	@GetMapping("/eliminarProducto/{id}")
 	public ModelAndView deleteProducto(@PathVariable(name = "id") String id) {
@@ -63,6 +79,7 @@ public class ProductoController {
 
 			return modelView;
 		}
+				    
 		@GetMapping("/listadoProductos")
 		public ModelAndView getAllproductos() {
 			// codigo

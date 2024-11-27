@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import ar.edu.ies6.model.Cliente;
 import ar.edu.ies6.model.Producto;
 import ar.edu.ies6.service.IProductoService;
+import ar.edu.ies6.util.AlmacenCliente;
 import ar.edu.ies6.util.AlmacenProductos;
 
 
@@ -20,8 +22,10 @@ public class ProductoServiceImp implements IProductoService {
 	public void guardarProducto(Producto producto) {
 		// TODO Auto-generated method stub
 		AlmacenProductos.producto.add(producto);
-		System.out.println(AlmacenProductos.producto.get(0).getId());
+		System.out.println("Producto guardado: "+ producto);
 	}
+	
+		
 
 	@Override
 	public void eliminarProducto(String codigo) {

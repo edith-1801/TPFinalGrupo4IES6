@@ -31,9 +31,10 @@
                 <p class="card-text">El total de la compra es: $<span th:text="${compra.totalCompra}"></span>.</p>
                 <p class="card-text">Cliente: <span th:text="${compra.cliente.nombre}"></span>.</p>
                 <p class="card-text">Producto(s):</p>
+                <p class="card-text">Se retira por: <span th:text="${compra.retiroEn}"></span>.</p>
                 <ul>
                     <li th:each="producto, iterStat : ${compra.productos}">
-                        <span th:text="${producto.nombre}"></span> - Cantidad: <span th:text="${cantidad[iterStat.index]}"></span>
+                        <span th:text="${producto.nombre}">Nombre del Producto</span> - Cantidad: <span th:text="${cantidad[iterStat.index]}">1</span>
                     </li>
                 </ul>
                 <a href="/listadoCompras" class="btn btn-primary">Volver a la Lista de Compras</a>

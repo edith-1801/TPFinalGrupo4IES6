@@ -3,16 +3,7 @@ package ar.edu.ies6.model;
 import java.sql.Date;
 import java.util.List;
 import org.springframework.stereotype.Component;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
+import jakarta.persistence.*;
 
 @Component
 @Entity
@@ -34,29 +25,26 @@ public class Compra {
     @Column
     private String estadoCompra;
 
+    @Column
+    private String retiroEn; // Correctamente anotado
+
     @Lob
     @Column(columnDefinition = "LONGTEXT")
-    private String foto;  // Cambiado a foto
+    private String foto;
 
-    @Column(length = 1000)
-    private String descripcionProducto;
+    @Column
+    private String descripcionProducto; // Sin longitud específica
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     @ManyToMany
-    @JoinTable(
-        name = "compra_producto",
-        joinColumns = @JoinColumn(name = "compra_id"),
-        inverseJoinColumns = @JoinColumn(name = "producto_id")
-    )
     private List<Producto> productos;
 
     public Compra() {}
 
     // Constructor con todos los atributos
-    public Compra(Long id, Date fechaCompra, String totalCompra, String metodoPago, String estadoCompra, String foto, String descripcionProducto, Cliente cliente, List<Producto> productos) {
+    public Compra(Long id, Date fechaCompra, String totalCompra, String metodoPago, String estadoCompra, String foto, String descripcionProducto, Cliente cliente, List<Producto> productos, String retiroEn) {
         this.id = id;
         this.fechaCompra = fechaCompra;
         this.totalCompra = totalCompra;
@@ -66,9 +54,11 @@ public class Compra {
         this.descripcionProducto = descripcionProducto;
         this.cliente = cliente;
         this.productos = productos;
+        this.retiroEn = retiroEn;
     }
 
     // Getters y setters
+
     public Long getId() {
         return id;
     }
@@ -141,8 +131,11 @@ public class Compra {
         this.productos = productos;
     }
 
-	public void setImagenPath(String base64Image) {
-		// TODO Auto-generated method stub
-		
-	}
+    public String getRetiroEn() {
+        return retiroEn;
+    }
+
+    public void setRetiroEn(String retiroEn) {
+        this.retiroEn = retiroEn;
+    }
 }

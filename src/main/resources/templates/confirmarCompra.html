@@ -36,6 +36,7 @@
                         <p class="card-text"><strong>Método de Pago:</strong> <span th:text="${compra.metodoPago}"></span></p>
                         <p class="card-text"><strong>Estado de la Compra:</strong> <span th:text="${compra.estadoCompra}"></span></p>
                         <p class="card-text"><strong>Descripción del Producto:</strong> <span th:text="${compra.descripcionProducto}"></span></p>
+                        <p class="card-text"><strong>Retiro En:</strong> <span th:text="${compra.retiroEn}"></span></p>
                         <form th:object="${compra}" th:action="@{/realizarCompra/{id}(id=${compra.id})}" method="post">
                             <div class="mb-3">
                                 <label for="metodoPago" class="form-label">Método de Pago</label>
@@ -43,6 +44,14 @@
                                     <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
                                     <option value="Efectivo">Efectivo</option>
                                     <option value="Transferencia">Transferencia</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="retiroEn" class="form-label">Local</label>
+                                <select th:field="*{retiroEn}" class="form-select" id="retiroEn" required>
+                                    <option value="Sucursal CorreoArg">Sucursal CorreoArg</option>
+                                    <option value="Sucursal aDomicilio">Sucursal a Domicilio</option>
+                                    <option value="Local">Local</option>
                                 </select>
                             </div>
                             <div class="mb-3">

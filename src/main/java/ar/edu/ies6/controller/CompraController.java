@@ -49,6 +49,7 @@ public class CompraController {
         ModelAndView transportador = new ModelAndView("formularioCompra");
         transportador.addObject("compra", unaCompra);
         transportador.addObject("clientes", clienteService.listarTodosClientes());
+        transportador.addObject("productos", productoService.listarTodosProducto());
         transportador.addObject("band", false);
         return transportador;
     }
@@ -92,8 +93,9 @@ public class CompraController {
         Compra compra = compraService.consultarCompra(id);
         ModelAndView modelView = new ModelAndView("formularioCompra");
         modelView.addObject("compra", compra);
-        modelView.addObject("band", true);  // Para diferenciar si es una modificación
+        modelView.addObject("band", true);  
         modelView.addObject("clientes", clienteService.listarTodosClientes());
+        modelView.addObject("productos", productoService.listarTodosProducto());
         return modelView;
     }
 
@@ -103,7 +105,7 @@ public class CompraController {
             try {
                 byte[] bytes = imagen.getBytes();
                 String base64Image = Base64.getEncoder().encodeToString(bytes);
-                compra.setFoto(base64Image); // Usar el campo Foto
+                compra.setFoto(base64Image); // Usa el campo Foto
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -123,16 +125,18 @@ public class CompraController {
     }
 
     @PostMapping("/realizarCompra/{id}")
-    public ModelAndView realizarCompra(@PathVariable(name = "id") Long id, @RequestParam("metodoPago") String metodoPago, @RequestParam("productosIds") String productosIds, @RequestParam("clienteId") String clienteId, @RequestParam("cantidad") int cantidad) {
+    public ModelAndView realizarCompra(@PathVariable(name = "id") Long id, @RequestParam("metodoPago") String metodoPago, @RequestParam("productosIds") String productosIds, @RequestParam("clienteId") String clienteId, @RequestParam("cantidad") int cantidad, @RequestParam("retiroEn") String retiroEn) {
         logger.info("Realizando compra con ID: {}", id);
         logger.info("Método de Pago: {}", metodoPago);
         logger.info("Producto ID: {}", productosIds);
         logger.info("Cliente ID: {}", clienteId);
         logger.info("Cantidad: {}", cantidad);
+        logger.info("Retiro En: {}", retiroEn);
 
         Compra compra = compraService.consultarCompra(id);
         compra.setMetodoPago(metodoPago); // Actualizamos el método de pago
         compra.setEstadoCompra("Confirmada"); // Actualizamos el estado de la compra
+        compra.setRetiroEn(retiroEn); // Actualizamos el lugar de retiro
         Cliente cliente = clienteService.consultarCliente(clienteId);
         compra.setCliente(cliente); // Asignamos el cliente a la compra
 
