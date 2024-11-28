@@ -1,45 +1,46 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"> <!-- Define el tipo de documento y la versión de HTML, además del uso de Thymeleaf. -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Compra Realizada</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres del documento como UTF-8. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Configura la visualización para que se adapte a diferentes tamaños de pantalla. -->
+    <title>Compra Realizada</title> <!-- Define el título del documento que aparece en la pestaña del navegador. -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Incluye el archivo CSS de Bootstrap desde una CDN. -->
     <style>
         .card {
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Añade margen inferior a los elementos con clase 'card'. */
         }
         .btn-primary {
-            background-color: #ff6600;
-            border-color: #ff6600;
+            background-color: #ff6600; /* Cambia el color de fondo del botón primario. */
+            border-color: #ff6600; /* Cambia el color del borde del botón primario. */
         }
         .btn-secondary {
-            background-color: #cccccc;
-            border-color: #cccccc;
+            background-color: #cccccc; /* Cambia el color de fondo del botón secundario. */
+            border-color: #cccccc; /* Cambia el color del borde del botón secundario. */
         }
     </style>
 </head>
 <body>
-    <div th:replace="layout/header :: header"></div>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Compra Realizada</h1>
+    <div th:replace="layout/header :: header"></div> <!-- Reemplaza este elemento con el contenido del fragmento 'header' usando Thymeleaf. -->
+    <div class="container mt-5"> <!-- Contenedor principal con margen superior. -->
+        <h1 class="text-center mb-4">Compra Realizada</h1> <!-- Título centrado con margen inferior. -->
         <div class="card">
             <div class="card-body text-center">
-                <h5 class="card-title">¡Gracias por tu compra!</h5>
-                <p class="card-text">Tu compra con ID <span th:text="${compra.id}"></span> ha sido confirmada.</p>
-                <p class="card-text">El método de pago seleccionado es: <span th:text="${compra.metodoPago}"></span>.</p>
-                <p class="card-text">El total de la compra es: $<span th:text="${compra.totalCompra}"></span>.</p>
-                <p class="card-text">Cliente: <span th:text="${compra.cliente.nombre}"></span>.</p>
+                <h5 class="card-title">¡Gracias por tu compra!</h5> <!-- Título de la tarjeta -->
+                <p class="card-text">Tu compra con ID <span th:text="${compra.id}"></span> ha sido confirmada.</p> <!-- Muestra el ID de la compra. -->
+                <p class="card-text">El método de pago seleccionado es: <span th:text="${compra.metodoPago}"></span>.</p> <!-- Muestra el método de pago. -->
+                <p class="card-text">El total de la compra es: $<span th:text="${compra.totalCompra}"></span>.</p> <!-- Muestra el total de la compra. -->
+                <p class="card-text">Cliente: <span th:text="${compra.cliente.nombre}"></span>.</p> <!-- Muestra el nombre del cliente. -->
                 <p class="card-text">Producto(s):</p>
+                <p class="card-text">Se retira por: <span th:text="${compra.retiroEn}"></span>.</p> <!-- Muestra el lugar de retiro de la compra. -->
                 <ul>
-                    <li th:each="producto, iterStat : ${compra.productos}">
-                        <span th:text="${producto.nombre}"></span> - Cantidad: <span th:text="${cantidad[iterStat.index]}"></span>
+                    <li th:each="producto, iterStat : ${compra.productos}"> <!-- Itera sobre la lista de productos usando Thymeleaf. -->
+                        <span th:text="${producto.nombre}">Nombre del Producto</span> - Cantidad: <span th:text="${cantidad[iterStat.index]}">1</span> <!-- Muestra el nombre del producto y la cantidad. -->
                     </li>
                 </ul>
-                <a href="/listadoCompras" class="btn btn-primary">Volver a la Lista de Compras</a>
+                <a href="/listadoCompras" class="btn btn-primary">Volver a la Lista de Compras</a> <!-- Enlace para volver a la lista de compras. -->
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Incluye el archivo JavaScript de Bootstrap desde una CDN. -->
 </body>
 </html>

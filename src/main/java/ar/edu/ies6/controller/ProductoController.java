@@ -79,6 +79,7 @@ public class ProductoController {
 
 			return modelView;
 		}
+				    
 		@GetMapping("/listadoProductos")
 		public ModelAndView getAllproductos() {
 			// codigo

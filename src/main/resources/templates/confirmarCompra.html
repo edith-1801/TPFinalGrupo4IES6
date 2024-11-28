@@ -1,42 +1,43 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"> <!-- Define el tipo de documento y la versión de HTML, además del uso de Thymeleaf. -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Confirma Tu Compra</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres del documento como UTF-8. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Configura la visualización para que se adapte a diferentes tamaños de pantalla. -->
+    <title>Confirma Tu Compra</title> <!-- Define el título del documento que aparece en la pestaña del navegador. -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Incluye el archivo CSS de Bootstrap desde una CDN. -->
     <style>
         .card {
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Añade margen inferior a los elementos con clase 'card'. */
         }
         .btn-primary {
-            background-color: #ff6600;
-            border-color: #ff6600;
+            background-color: #ff6600; /* Cambia el color de fondo del botón primario. */
+            border-color: #ff6600; /* Cambia el color del borde del botón primario. */
         }
         .btn-secondary {
-            background-color: #cccccc;
-            border-color: #cccccc;
+            background-color: #cccccc; /* Cambia el color de fondo del botón secundario. */
+            border-color: #cccccc; /* Cambia el color del borde del botón secundario. */
         }
     </style>
 </head>
 <body>
-    <div th:replace="layout/header :: header"></div>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Confirma Tu Compra</h1>
+    <div th:replace="layout/header :: header"></div> <!-- Reemplaza este elemento con el contenido del fragmento 'header' usando Thymeleaf. -->
+    <div class="container mt-5"> <!-- Contenedor principal con margen superior. -->
+        <h1 class="text-center mb-4">Confirma Tu Compra</h1> <!-- Título centrado con margen inferior. -->
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <img th:src="'data:image/jpeg;base64,' + ${compra.foto}" class="img-fluid" alt="Imagen del Producto">
+                        <img th:src="'data:image/jpeg;base64,' + ${compra.foto}" class="img-fluid" alt="Imagen del Producto"> <!-- Muestra la foto del producto en la tarjeta. -->
                     </div>
                     <div class="col-md-8">
-                        <h5 class="card-title">Compra ID: <span th:text="${compra.id}"></span></h5>
-                        <p class="card-text"><strong>Fecha de Compra:</strong> <span th:text="${compra.fechaCompra}"></span></p>
-                        <p class="card-text"><strong>Total de la Compra:</strong> $<span th:text="${compra.totalCompra}"></span></p>
-                        <p class="card-text"><strong>Método de Pago:</strong> <span th:text="${compra.metodoPago}"></span></p>
-                        <p class="card-text"><strong>Estado de la Compra:</strong> <span th:text="${compra.estadoCompra}"></span></p>
-                        <p class="card-text"><strong>Descripción del Producto:</strong> <span th:text="${compra.descripcionProducto}"></span></p>
-                        <form th:object="${compra}" th:action="@{/realizarCompra/{id}(id=${compra.id})}" method="post">
+                        <h5 class="card-title">Compra ID: <span th:text="${compra.id}"></span></h5> <!-- Muestra el ID de la compra. -->
+                        <p class="card-text"><strong>Fecha de Compra:</strong> <span th:text="${compra.fechaCompra}"></span></p> <!-- Muestra la fecha de la compra. -->
+                        <p class="card-text"><strong>Total de la Compra:</strong> $<span th:text="${compra.totalCompra}"></span></p> <!-- Muestra el total de la compra. -->
+                        <p class="card-text"><strong>Método de Pago:</strong> <span th:text="${compra.metodoPago}"></span></p> <!-- Muestra el método de pago de la compra. -->
+                        <p class="card-text"><strong>Estado de la Compra:</strong> <span th:text="${compra.estadoCompra}"></span></p> <!-- Muestra el estado de la compra. -->
+                        <p class="card-text"><strong>Descripción del Producto:</strong> <span th:text="${compra.descripcionProducto}"></span></p> <!-- Muestra la descripción del producto. -->
+                        <p class="card-text"><strong>Retiro En:</strong> <span th:text="${compra.retiroEn}"></span></p> <!-- Muestra el lugar de retiro de la compra. -->
+                        <form th:object="${compra}" th:action="@{/realizarCompra/{id}(id=${compra.id})}" method="post"> <!-- Formulario para confirmar la compra con Thymeleaf. -->
                             <div class="mb-3">
                                 <label for="metodoPago" class="form-label">Método de Pago</label>
                                 <select th:field="*{metodoPago}" class="form-select" id="metodoPago" required>
@@ -46,24 +47,32 @@
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label for="retiroEn" class="form-label">Local</label>
+                                <select th:field="*{retiroEn}" class="form-select" id="retiroEn" required>
+                                    <option value="Sucursal CorreoArg">Sucursal CorreoArg</option>
+                                    <option value="Sucursal a Domicilio">Sucursal a Domicilio</option>
+                                    <option value="Local">Local</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="clienteId" class="form-label">Seleccionar Cliente</label>
                                 <select name="clienteId" class="form-select" id="clienteId" required>
-                                    <option th:each="cliente : ${clientes}" th:value="${cliente.dni}" th:text="${cliente.nombre}"></option>
+                                    <option th:each="cliente : ${clientes}" th:value="${cliente.dni}" th:text="${cliente.nombre}"></option> <!-- Itera sobre la lista de clientes usando Thymeleaf. -->
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="productosIds" class="form-label">Seleccionar Producto</label>
                                 <select name="productosIds" class="form-select" id="productosIds" required>
-                                    <option th:each="producto : ${productos}" th:value="${producto.id}" th:text="${producto.nombre}"></option>
+                                    <option th:each="producto : ${productos}" th:value="${producto.id}" th:text="${producto.nombre}"></option> <!-- Itera sobre la lista de productos usando Thymeleaf. -->
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="cantidad" class="form-label">Cantidad</label>
-                                <input type="number" class="form-control" name="cantidad" id="cantidad" min="1" value="1" required>
+                                <input type="number" class="form-control" name="cantidad" id="cantidad" min="1" value="1" required> <!-- Campo para seleccionar la cantidad de productos. -->
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">COMPRAR</button>
-                                <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='/cancelarCompra/${compra.id}'">CANCELAR COMPRA</button>
+                                <button type="submit" class="btn btn-primary btn-lg">COMPRAR</button> <!-- Botón para confirmar la compra. -->
+                               <a href="/listadoCompras" class="btn btn-secondary btn-lg">Cancelar Compra</a>>
                             </div>
                         </form>
                     </div>
@@ -71,6 +80,6 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Incluye el archivo JavaScript de Bootstrap desde una CDN. -->
 </body>
 </html>

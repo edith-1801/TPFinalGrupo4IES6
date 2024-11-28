@@ -68,7 +68,7 @@
             <form th:action="@{/guardarCliente}" th:object="${nuevoCliente}" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="dni" class="form-label">DNI</label>
-                    <input type="text" id="dni" class="form-control" th:field="*{dni}" th:readonly="${band}" required />
+                    <input type="number" id="dni" class="form-control" th:field="*{dni}" th:readonly="${band}" required />
                 </div>
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
