@@ -5,43 +5,43 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import jakarta.persistence.*;
 
-@Component
-@Entity
+@Component // Marca la clase como un componente Spring, permitiendo que Spring la gestione y la inyecte donde sea necesario.
+@Entity // Indica que esta clase es una entidad JPA y será mapeada a una tabla de base de datos.
 public class Compra {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // Indica que el campo 'id' es la clave primaria de la tabla.
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Especifica que el valor de 'id' se generará automáticamente.
     private Long id;
 
-    @Column
+    @Column // Marca el campo 'fechaCompra' para que sea persistido en la base de datos como una columna.
     private Date fechaCompra;
 
-    @Column
+    @Column // Marca el campo 'totalCompra' para que sea persistido en la base de datos como una columna.
     private String totalCompra;
 
-    @Column
+    @Column // Marca el campo 'metodoPago' para que sea persistido en la base de datos como una columna.
     private String metodoPago;
 
-    @Column
+    @Column // Marca el campo 'estadoCompra' para que sea persistido en la base de datos como una columna.
     private String estadoCompra;
 
-    @Column
+    @Column // Marca el campo 'retiroEn' para que sea persistido en la base de datos como una columna.
     private String retiroEn; // Correctamente anotado
 
-    @Lob
-    @Column(columnDefinition = "LONGTEXT")
+    @Lob // Marca el campo 'foto' como un tipo de datos grande (Large Object).
+    @Column(columnDefinition = "LONGTEXT") // Especifica que la columna 'foto' será de tipo LONGTEXT.
     private String foto;
 
-    @Column
+    @Column // Marca el campo 'descripcionProducto' para que sea persistido en la base de datos como una columna.
     private String descripcionProducto; // Sin longitud específica
 
-    @ManyToOne
+    @ManyToOne // Define una relación muchos a uno con la entidad Cliente.
     private Cliente cliente;
 
-    @ManyToMany
+    @ManyToMany // Define una relación muchos a muchos con la entidad Producto.
     private List<Producto> productos;
 
-    public Compra() {}
+    public Compra() {} // Constructor por defecto
 
     // Constructor con todos los atributos
     public Compra(Long id, Date fechaCompra, String totalCompra, String metodoPago, String estadoCompra, String foto, String descripcionProducto, Cliente cliente, List<Producto> productos, String retiroEn) {
@@ -139,3 +139,4 @@ public class Compra {
         this.retiroEn = retiroEn;
     }
 }
+

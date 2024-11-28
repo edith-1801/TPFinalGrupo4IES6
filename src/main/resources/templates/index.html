@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BIENVENIDOS AL PROYECTO</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"> <!-- Establece la codificación de caracteres del documento como UTF-8. -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Configura la visualización para que se adapte a diferentes tamaños de pantalla. -->
+<title>BIENVENIDOS AL PROYECTO</title> <!-- Define el título del documento que aparece en la pestaña del navegador. -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> <!-- Incluye el archivo CSS de Bootstrap desde una CDN. -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet"> <!-- Incluye la fuente 'Roboto' desde Google Fonts. -->
 <style>
    .navbar {
-       background-color: #4CAF50;
+       background-color: #4CAF50; /* Cambia el color de fondo de la barra de navegación. */
    }
    .navbar-brand, .nav-link {
-       color: white !important;
+       color: white !important; /* Cambia el color del texto en la barra de navegación a blanco. */
    }
    .header-text {
-       background-color: #4CAF50;
-       color: white;
-       padding: 20px;
-       text-align: center;
+       background-color: #4CAF50; /* Cambia el color de fondo del encabezado. */
+       color: white; /* Cambia el color del texto en el encabezado a blanco. */
+       padding: 20px; /* Añade relleno al encabezado. */
+       text-align: center; /* Centra el texto en el encabezado. */
    }
    .welcome-section {
-       margin-top: 20px;
-       text-align: center;
-       background-color: #f8f9fa;
-       padding: 20px;
-       border-radius: 5px;
+       margin-top: 20px; /* Añade margen superior a la sección de bienvenida. */
+       text-align: center; /* Centra el texto en la sección de bienvenida. */
+       background-color: #f8f9fa; /* Cambia el color de fondo de la sección de bienvenida. */
+       padding: 20px; /* Añade relleno a la sección de bienvenida. */
+       border-radius: 5px; /* Redondea las esquinas de la sección de bienvenida. */
    }
    .welcome-section h1 {
-       color: #4CAF50;
-       font-family: 'Roboto', sans-serif;
-       font-weight: 700;
+       color: #4CAF50; /* Cambia el color del texto del título en la sección de bienvenida. */
+       font-family: 'Roboto', sans-serif; /* Aplica la fuente 'Roboto' al título. */
+       font-weight: 700; /* Hace que el título sea más grueso. */
    }
    .btn-custom {
-       background-color: #4CAF50;
-       border: none;
+       background-color: #4CAF50; /* Cambia el color de fondo del botón personalizado. */
+       border: none; /* Elimina el borde del botón personalizado. */
    }
 </style>
 </head>
@@ -41,13 +41,14 @@
   
    <!-- Navbar personalizada -->
    <nav class="navbar navbar-expand-lg">
-        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+       <!-- Enlace para la página de inicio -->
+       <a class="nav-link active" aria-current="page" href="/">Inicio</a>
        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
        </button>
        <div class="collapse navbar-collapse" id="navbarNav">
            <ul class="navbar-nav me-auto">
-            
+               <!-- Menú desplegable para listas -->
                <li class="nav-item dropdown">
                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Listas</a>
                    <ul class="dropdown-menu">
@@ -56,6 +57,7 @@
                        <li><a class="dropdown-item" href="/listadoCompras">Lista Compras</a></li>
                    </ul>
                </li>
+               <!-- Menú desplegable para opciones -->
                <li class="nav-item dropdown">
                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Opciones</a>
                    <ul class="dropdown-menu">
@@ -65,10 +67,12 @@
                        <li><a class="dropdown-item" href="/compra">ModifCompras</a></li>
                    </ul>
                </li>
+               <!-- Enlace deshabilitado -->
                <li class="nav-item">
                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                </li>
            </ul>
+           <!-- Formulario de búsqueda -->
            <form class="d-flex">
                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
                <button class="btn btn-outline-light" type="submit">Buscar</button>
@@ -82,14 +86,14 @@
    </nav>
    <div class="container">
        <main class="welcome-section">
-           <h1 class="display-4">REALIZA TU COMPRA DESDE LA COMODIDAD DE TU CASA</h1>
-           <hr class="my-4">
+           <h1 class="display-4">REALIZA TU COMPRA DESDE LA COMODIDAD DE TU CASA</h1> <!-- Título principal de la página de bienvenida -->
+           <hr class="my-4"> <!-- Separador horizontal -->
            <!-- Hacer la imagen un enlace clicable -->
            <a href="/nuevoCliente">
-               <img src="https://i.ibb.co/n34Cj5z/MOCKUP-02.jpg" class="img-fluid" alt="Imagen de Bienvenida">
+               <img src="https://i.ibb.co/n34Cj5z/MOCKUP-02.jpg" class="img-fluid" alt="Imagen de Bienvenida"> <!-- Imagen de bienvenida enlazada a la página de nuevo cliente -->
            </a>
        </main>
    </div>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> <!-- Incluye el archivo JavaScript de Bootstrap desde una CDN. -->
 </body>
 </html>

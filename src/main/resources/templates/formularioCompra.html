@@ -1,52 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"> <!-- Define el tipo de documento y la versión de HTML, además del uso de Thymeleaf. -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Formulario de Compra</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres del documento como UTF-8. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Configura la visualización para que se adapte a diferentes tamaños de pantalla. -->
+    <title>Formulario de Compra</title> <!-- Define el título del documento que aparece en la pestaña del navegador. -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Incluye el archivo CSS de Bootstrap desde una CDN. -->
     <style>
         .card {
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Añade margen inferior a los elementos con clase 'card'. */
         }
         .btn-primary {
-            background-color: #ff6600;
-            border-color: #ff6600;
+            background-color: #ff6600; /* Cambia el color de fondo del botón primario. */
+            border-color: #ff6600; /* Cambia el color del borde del botón primario. */
         }
         .btn-secondary {
-            background-color: #cccccc;
-            border-color: #cccccc;
+            background-color: #cccccc; /* Cambia el color de fondo del botón secundario. */
+            border-color: #cccccc; /* Cambia el color del borde del botón secundario. */
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"> <!-- Crea una barra de navegación con Bootstrap. -->
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Tienda iES6</a>
+            <a class="navbar-brand" href="#">Tienda iES6</a> <!-- Enlace de la marca en la barra de navegación. -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-          <div th:replace="~{layout/header :: header}"></div>
+                        <div th:replace="~{layout/header :: header}"></div> <!-- Reemplaza este elemento con el contenido del fragmento 'header' usando Thymeleaf. -->
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Registrar Nueva Compra</h1>
-        <form th:object="${compra}" th:action="@{/guardarNuevaCompra}" method="post" enctype="multipart/form-data">
+    <div class="container mt-5"> <!-- Contenedor principal con margen superior. -->
+        <h1 class="text-center mb-4">Registrar Nueva Compra</h1> <!-- Título centrado con margen inferior. -->
+        <form th:object="${compra}" th:action="@{/guardarNuevaCompra}" method="post" enctype="multipart/form-data"> <!-- Formulario para registrar una nueva compra con Thymeleaf. -->
             <div class="card">
                 <div class="card-body">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="fechaCompra" class="form-label">Fecha de Compra</label>
-                            <input type="date" th:field="*{fechaCompra}" class="form-control" id="fechaCompra" required>
+                            <input type="date" th:field="*{fechaCompra}" class="form-control" id="fechaCompra" required> <!-- Campo de entrada para la fecha de compra. -->
                         </div>
                         <div class="col-md-6">
                             <label for="totalCompra" class="form-label">Total de Compra</label>
-                            <input type="number" th:field="*{totalCompra}" class="form-control" id="totalCompra" required>
+                            <input type="number" th:field="*{totalCompra}" class="form-control" id="totalCompra" required> <!-- Campo de entrada para el total de la compra. -->
                         </div>
                     </div>
                 </div>
@@ -74,23 +75,23 @@
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <label for="imagen" class="form-label">Cargar Imagen</label>
-                            <input type="file" class="form-control" id="imagen" name="imagen" required>
+                            <input type="file" class="form-control" id="imagen" name="imagen" required> <!-- Campo para cargar una imagen. -->
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <label for="descripcionProducto" class="form-label">Descripción del Producto</label>
-                            <textarea th:field="*{descripcionProducto}" class="form-control" id="descripcionProducto" required></textarea>
+                            <textarea th:field="*{descripcionProducto}" class="form-control" id="descripcionProducto" required></textarea> <!-- Campo de texto para la descripción del producto. -->
                         </div>
                     </div>
                 </div>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-lg">Guardar Compra</button>
-                <a href="/listadoCompras" class="btn btn-secondary btn-lg">Cancelar</a>
+                <button type="submit" class="btn btn-primary btn-lg">Guardar Compra</button> <!-- Botón para enviar el formulario y guardar la compra. -->
+                <a href="/listadoCompras" class="btn btn-secondary btn-lg">Cancelar</a> <!-- Enlace para cancelar y volver a la lista de compras. -->
             </div>
         </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Incluye el archivo JavaScript de Bootstrap desde una CDN. -->
 </body>
 </html>
