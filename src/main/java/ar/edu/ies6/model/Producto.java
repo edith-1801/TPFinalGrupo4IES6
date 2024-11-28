@@ -8,9 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 
+import jakarta.persistence.Lob;
 @Component
 @Entity
 public class Producto {
+
     @Id
     private String id;
     @Column
@@ -32,6 +34,7 @@ public class Producto {
     private Set<Compra> compras;
 
     public Producto() {}
+
 
     // Getters y setters
     public String getId() {
@@ -86,9 +89,11 @@ public class Producto {
         return marca;
     }
 
+
     public void setMarca(String marca) {
         this.marca = marca;
     }
+
 
     public String getFoto() {
         return foto;
